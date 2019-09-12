@@ -1,15 +1,12 @@
 import random
 
 def randPerson(arr):
-    weirdNamesint = random.randint(0, 2)
+    TeamInt = random.randint(0, 2)
     arr1 = list()
-    for wdName in arr:
-        arr1.append(wdName)
-    #print(arr1)
-    weirdName = arr1[weirdNamesint]
-    #print(weirdName)
+    for Team in arr:
+        arr1.append(Team)
+    weirdName = arr1[TeamInt]
     arrNames = arr[weirdName]
-    #print(arrNames)
     nameLength = len(arrNames)
     print(arrNames[random.randint(0, nameLength)])
 
