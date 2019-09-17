@@ -14,11 +14,21 @@ def createDict(csvFile):
         csvRead = csv.reader(oldcsv, delimiter = ',')
         for row in csvRead:
             if counter > 0:
-                newDict[row[0]] = float(row[1]) #i dont know if i need float, but there is a decimal so probably....
+                newDict[float(row[1])] = float(row[0]) #i dont know if i need float, but there is a decimal so probably....
             counter += 1
     del newDict['Total']
     return newDict
 
 
 def createArray(newDict):
-    
+    newArr = []
+    for key in newDict.keys():# extract numbers. (percents)
+        for x in range(int(key * 10)):
+            newArr.append(newDict[key])
+    return newArr
+
+def randomPick(newArr):
+    print(random.choice(newArr))
+
+
+randomPick(createArray(createDict('occupations.csv')))
