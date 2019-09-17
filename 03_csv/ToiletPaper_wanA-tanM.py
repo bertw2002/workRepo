@@ -9,14 +9,14 @@ import csv
 
 def createDict(csvFile):
     newDict = {}
-    with open(filename) as oldcsv:
+    with open(csvFile) as oldcsv:
         counter = 0 # counter to skip first row, because it's just the heading
         csvRead = csv.reader(oldcsv, delimiter = ',')
         for row in csvRead:
             if counter > 0:
-                newDict[float(row[1])] = float(row[0]) #i dont know if i need float, but there is a decimal so probably....
+                newDict[float(row[1])] = (row[0]) #i dont know if i need float, but there is a decimal so probably....
             counter += 1
-    del newDict['Total']
+    del newDict[99.8]
     return newDict
 
 
