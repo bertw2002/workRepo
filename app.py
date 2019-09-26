@@ -11,8 +11,10 @@ def route():
     print(request)
     print("***DIAG: request.args***")
     print(request.args)
-    print("***DIAG: request.args['firstname']***")
-    print(request.args['firstname'])
+    # print("***DIAG: request.args['firstname']***")
+    # print(request.args['firstname'])
+    print("***DIAG: request.args['username']***")
+    print(request.args['username'])
     print("***DIAG: request.headers***")
     print(request.headers)
     return ""
@@ -25,6 +27,10 @@ def route():
 def occupy():
     print("foo")
     return render_template("foo.html")
+@app.route("/foo2")
+def occupy2():
+    print("foo2")
+    return render_template("foo2.html")
 if __name__ == "__main__":
     app.debug = True
     app.run()
