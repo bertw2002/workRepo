@@ -1,12 +1,30 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import random
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/auth")
 def route():
+    print("\n\n\n")
+    print("***DIAG: this Flask obj ***")
     print(app)
+    print("***DIAG: request obj***")
+    print(request)
+    print("***DIAG: request.args***")
+    print(request.args)
+    print("***DIAG: request.args['firstname']***")
+    print(request.args['firstname'])
+    print("***DIAG: request.headers***")
+    print(request.headers)
     return ""
 
+###@app.route("/")
+##def render_static(page_name):
+#    return render_template('%s.html' % page_name)
+
+@app.route("/foo")
+def occupy():
+    print("foo")
+    return render_template("foo.html")
 if __name__ == "__main__":
     app.debug = True
     app.run()
