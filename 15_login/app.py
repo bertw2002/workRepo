@@ -8,13 +8,17 @@ app = Flask(__name__)
 user = {}
 
 @app.route("/")
-def occupy():
-    print("hello")
+def root():
 #    username = request.args['username']
 #    password = request.args['password']
-    print(request.cookies)
 #    if request.cookies.get['login']:  # replace with actual conditional
 #        redirect('/account')
+    if False:  # change so that this will only be true if user is already logged in
+        return redirect('/account')
+    return redirect('/login')
+
+@app.route('/login')
+def login:
     return render_template(
         "page.html",
     )
@@ -31,9 +35,9 @@ def route():
     print(request.cookies)
     print('decoy')
     if username not in logins.keys():
-        return redirect('/newuser')
-    if username == password:
-        return redirect('/login')
+        return redirect('/username_error')
+    if logins[username] != password:
+        return redirect('/password_error')
     return redirect('/account')
 
 @app.route('/account')
@@ -45,7 +49,7 @@ def login():
         #user=username
     )
 
-@app.route('/newuser')
+@app.route('/username_error')
 def newuser():
     """This is where people can make a new account"""
     return render_template(
