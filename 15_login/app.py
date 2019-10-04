@@ -17,8 +17,10 @@ def root():
 
 @app.route('/login')
 def login:
+    #checks if you are logged in from same session to prevent errors
     if "loggedin" in session:
         return render_template('account.html')
+        #else, just go to regular login page.
     return render_template(
         "page.html",
     )
@@ -33,11 +35,14 @@ def route():
     if (usern == request.args['username']):
         if (pas == request.args['password']):
             session["loggedin"] = True
+            # if you put in the correct user and password,
+            # make the logging for session true.
     if username not in logins.keys():
         return redirect('/username_error')
+        # if username wrong, go to username error path, vice versa
     if logins[username] != password:
         return redirect('/password_error')
-    return redirect('/account')
+    return redirect('/login')
 
 @app.route('/account')
 def login():
@@ -58,14 +63,14 @@ def logout():
 
 @app.route('/username_error')
 def newuser():
-    """This is where people can make a new account"""
+    #This is where people can make a new account"""
     return render_template(
         'usererror.html'
     )
 
 @app.route('/password_error')
 def newuser():
-    """This is where people can make a new account"""
+    #This is where people can make a new account"""
     return render_template(
         'passerror.html'
     )
