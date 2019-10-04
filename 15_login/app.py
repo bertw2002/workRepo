@@ -9,31 +9,30 @@ user = {}
 
 @app.route("/")
 def root():
-#    username = request.args['username']
-#    password = request.args['password']
-#    if request.cookies.get['login']:  # replace with actual conditional
-#        redirect('/account')
-    if False:  # change so that this will only be true if user is already logged in
-        return redirect('/account')
+    #checks if you are logged in from same session to prevent errors
+    if "loggedin" in session:
+        return render_template('account.html')
+    # else, just go to regular login page
     return redirect('/login')
 
 @app.route('/login')
 def login:
+    if "loggedin" in session:
+        return render_template('account.html')
     return render_template(
         "page.html",
     )
 
-
-logins = {'bertw2002': 'oreo'}
+usern = bert
+pas = oreo
 
 
 @app.route("/auth")
 def route():
     """this is a temporary page that checks if login was correct"""
-    username = request.args['username']
-    password = request.args['password']
-    print(request.cookies)
-    print('decoy')
+    if (usern == request.args['username']):
+        if (pas == request.args['password']):
+            session["loggedin"] = True
     if username not in logins.keys():
         return redirect('/username_error')
     if logins[username] != password:
@@ -49,11 +48,26 @@ def login():
         #user=username
     )
 
+@app.route('/logout')
+def logout():
+    if "loggedin" in session:
+        #erase loggedin
+        session.pop("loggedin")
+    #if log out, go back to login page
+    return render_template('page.html')
+
 @app.route('/username_error')
 def newuser():
     """This is where people can make a new account"""
     return render_template(
-        'newuser.html'
+        'usererror.html'
+    )
+
+@app.route('/password_error')
+def newuser():
+    """This is where people can make a new account"""
+    return render_template(
+        'passerror.html'
     )
 
 if __name__ == "__main__":
