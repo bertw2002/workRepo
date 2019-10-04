@@ -5,7 +5,7 @@
 from flask import Flask, render_template, request, redirect, session
 app = Flask(__name__)
 
-user = {}
+app.secret_key = "unique key no one knows about"
 
 @app.route("/")
 def root():
@@ -16,7 +16,7 @@ def root():
     return redirect('/login')
 
 @app.route('/login')
-def login:
+def login():
     #checks if you are logged in from same session to prevent errors
     if "loggedin" in session:
         return render_template('account.html')
@@ -25,8 +25,8 @@ def login:
         "page.html",
     )
 
-usern = bert
-pas = oreo
+usern = "bert"
+pas = "oreo"
 
 
 @app.route("/auth")
@@ -37,21 +37,13 @@ def route():
             session["loggedin"] = True
             # if you put in the correct user and password,
             # make the logging for session true.
-    if username not in logins.keys():
+    if usern != request.args['username']:
         return redirect('/username_error')
         # if username wrong, go to username error path, vice versa
-    if logins[username] != password:
+    if pas != request.args['password']:
         return redirect('/password_error')
     return redirect('/login')
 
-@app.route('/account')
-def login():
-    """prints welcome message in account page"""
-    #user = request.args['username']
-    return render_template(
-        'account.html'
-        #user=username
-    )
 
 @app.route('/logout')
 def logout():
@@ -62,14 +54,14 @@ def logout():
     return render_template('page.html')
 
 @app.route('/username_error')
-def newuser():
+def usererror():
     #This is where people can make a new account"""
     return render_template(
         'usererror.html'
     )
 
 @app.route('/password_error')
-def newuser():
+def passerror():
     #This is where people can make a new account"""
     return render_template(
         'passerror.html'
