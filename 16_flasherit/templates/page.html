@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title> 15_login </title>
-  </head>
-  <body>
-    <h1> Login </h1>
-    <form action="/auth">
-      Username:<br>
-      <input type="text" name="username"><br>
-      Password:<br>
-      <input type ="text" name="password"><br>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
-</html>
+{% extends "parent.html" %}
+{% block title %}
+  15_login
+{% endblock %}
+
+{% block head %}
+  Login
+{% endblock %}
+{% block body %}
+  <form action="/auth">
+    Username:<br>
+    <input type="text" name="username"><br>
+    Password:<br>
+    <input type ="text" name="password"><br>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
