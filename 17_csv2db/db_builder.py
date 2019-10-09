@@ -42,7 +42,7 @@ with open('students.csv', newline=""_ as studentFile:
     #create table in mySql
     c.execute(command)
     for x in courseReader:
-        exec = "INSERT INTO students VALUES({{name}}, {{age}}, {{id}})""
+        exec = "INSERT INTO students VALUES({{name}}, {{age}}, {{id}})"
         #now, you insert each value into the table (or populate)
         c.execute(exec)
 
