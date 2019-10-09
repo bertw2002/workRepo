@@ -35,7 +35,7 @@ with open('courses.csv', newline="") as courseFile:
         #now, you populate values into the table
         c.execute(exec)
 
-with open('students.csv', newline=""_ as studentFile:
+with open('students.csv', newline="") as studentFile:
     courseReader = csv.DictReader(courseFile)
     #reads the file
     command = "CREATE TABLE students (name TEXT, age INTEGER, id INTEGER);"
