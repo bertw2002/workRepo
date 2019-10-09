@@ -22,8 +22,7 @@ c.execute(command)    # run SQL statement
 
 #==========================================================
 
-db.commit() #save changes
-db.close()  #close database
+
 with open('courses.csv', newline="") as courseFile:
     courseReader = csv.DictReader(courseFile)
     #reads the file
