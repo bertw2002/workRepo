@@ -17,20 +17,15 @@ c = db.cursor()               #facilitate db ops
 # < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
 
 
-command = ""          # test SQL stmt in sqlite3 shell, save as string
-c.execute(command)    # run SQL statement
-
 #==========================================================
-
-
+command = "CREATE TABLE courses (code TEXT, mark INTEGER, id INTEGER);"
+#create table in mySql
+c.execute(command)
 with open('courses.csv', newline="") as courseFile:
     courseReader = csv.DictReader(courseFile)
     #reads the file
-    command = "CREATE TABLE courses (code TEXT, mark INTEGER, id INTEGER);"
-    #create table in mySql
-    c.execute(command)
     for x in courseReader:
-        exec = "INSERT INTO courses VALUES({{code}}, {{mark}}, {{id}})"
+        exec = "INSERT INTO students VALUES ('{}', {}, {});".format(x['code'], x['mark'], x['id'])
         #now, you populate values into the table
         c.execute(exec)
 
@@ -41,7 +36,7 @@ with open('students.csv', newline="") as studentFile:
     #create table in mySql
     c.execute(command)
     for x in courseReader:
-        exec = "INSERT INTO students VALUES({{name}}, {{age}}, {{id}})"
+        exec = "INSERT INTO students VALUES ('{}', {}, {});".format(x['name'], x['age'], x['id'])
         #now, you insert each value into the table (or populate)
         c.execute(exec)
 
