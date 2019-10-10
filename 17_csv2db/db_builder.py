@@ -17,29 +17,26 @@ c = db.cursor()               #facilitate db ops
 # < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
 
 
-#==========================================================
-
-
-with open('courses.csv', newline="") as courseFile:
+command = "CREATE TABLE courses (code TEXT, mark INTEGER, id INTEGER);"
+#create table in mySql
+c.execute(command)
+with open('courses.csv') as courseFile:
     courseReader = csv.DictReader(courseFile)
     #reads the file
-    command = "CREATE TABLE courses (code TEXT, mark INTEGER, id INTEGER);"
-    #create table in mySql
-    c.execute(command)
-    for x in courseReader:
-#        exec = "INSERT INTO courses VALUES ('{}', {}, {});".format(x['code'], x['mark'], x['id'])
-        exec = "INSERT INTO courses VALUES ()"
-        #now, you populate values into the table
-        c.execute(exec)
 
-with open('students.csv', newline="") as studentFile:
-    courseReader = csv.DictReader(studentFile)
+    for row in courseReader:
+#        exec = "INSERT INTO courses VALUES ('{}', {}, {});".format(x['code'], x['mark'], x['id'])
+        command = "INSERT INTO courses VALUES(\"" + row['code'] + "\"" + ", " + row['mark'] + ", " + row['id'] + ");"
+        #now, you populate values into the table
+        c.execute(command)
+command = "CREATE TABLE students (name TEXT, age INTEGER, id INTEGER);"
+#create table in mySql
+c.execute(command)
+with open('students.csv') as studentFile:
+    studentReader = csv.DictReader(studentFile)
     #reads the file
-    command = "CREATE TABLE students (name TEXT, age INTEGER, id INTEGER);"
-    #create table in mySql
-    c.execute(command)
-    for x in courseReader:
-        exec = "INSERT INTO students VALUES ('{}', {}, {});".format(x['name'], x['age'], x['id'])
+    for row in studentReader:
+        exec = "INSERT INTO students VALUES(\"" + row['name'] + "\"" + ", " + row['age'] + ", " + row['id'] + ");"
         #now, you insert each value into the table (or populate)
         c.execute(exec)
 
