@@ -27,7 +27,8 @@ with open('courses.csv', newline="") as courseFile:
     #create table in mySql
     c.execute(command)
     for x in courseReader:
-        exec = "INSERT INTO courses VALUES ('{}', {}, {});".format(x['code'], x['mark'], x['id'])
+#        exec = "INSERT INTO courses VALUES ('{}', {}, {});".format(x['code'], x['mark'], x['id'])
+        exec = "INSERT INTO courses VALUES ()"
         #now, you populate values into the table
         c.execute(exec)
 
