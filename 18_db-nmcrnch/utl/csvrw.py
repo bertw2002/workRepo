@@ -27,5 +27,7 @@ def printTable(tbl_name, cur):
   cur.execute("SELECT * FROM " + tbl_name)
   for row in cur.fetchall():
     print(dict(row))
-# 
-# def grades(name):
+
+def insertcourses(code, mark, id, db):
+    insert =  "INSERT INTO courses VALUES(\"" + code + "\"" + ", " + mark + ", " + id + ");"
+    db.execute(insert)

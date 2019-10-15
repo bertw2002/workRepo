@@ -6,7 +6,7 @@
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitate CSV I/O
-from utl.csvrw import insertAll, printTable
+from utl.csvrw import insertAll, printTable,insertcourses
 DB_FILE="data.db"
 
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -19,20 +19,22 @@ average = """SELECT name, students.id, SUM(mark) / COUNT(mark)
     WHERE students.id = courses.id
     GROUP BY courses.id;"""
 
-newTable = "CREATE TABLE stu_avg(id INTEGER, average INTEGER)"
+#newTable = "CREATE TABLE IF NOT EXISTS stu_avg(id INTEGER, average INTEGER)"
 
 # creates table stu_avg
-c.execute(newTable)
+#c.execute(newTable)
 c.execute(average)
 
 averages = c.fetchall()
 print (averages)
 
+
+insertcourses("ai", "98", "11", c)
+
 for x in averages:
     print (x[0], ":",  x[1], ":", x[2])
     insert = "INSERT INTO stu_avg VALUES(" + str(x[1]) + "," +  str(x[2]) + ")" + ";"
     c.execute(insert)
-
 
 db.commit() #save changes
 db.close()  #close database

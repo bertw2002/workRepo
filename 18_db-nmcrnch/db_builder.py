@@ -1,4 +1,4 @@
-# Jun Tao Lei & Kenneth Chin
+# Albert Wan & Kenneth Chin
 # SoftDev1 pd9
 # K#17 - No Trouble
 # 2019-10-07
@@ -25,6 +25,8 @@ printTable("students", c)
 q = """SELECT name, students.id, mark
 FROM students, courses
 WHERE students.id = courses.id;"""
+
+
 
 foo = c.execute(q)
 print(foo)
