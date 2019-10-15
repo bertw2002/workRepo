@@ -1,4 +1,5 @@
 #Albert Wan, Kenneth Chin
+#Team Hamburger
 #SoftDev1 pd9
 #K18 -- Average
 #2019-10-11
@@ -21,7 +22,7 @@ average = """SELECT name, students.id, SUM(mark) / COUNT(mark)
 newTable = "CREATE TABLE stu_avg(id INTEGER, average INTEGER)"
 
 # creates table stu_avg
-# c.execute(newTable)
+c.execute(newTable)
 c.execute(average)
 
 averages = c.fetchall()
