@@ -13,7 +13,15 @@ def root():
     u = urllib2.urlopen("https://www.metaweather.com/api/location/44418/")
     response = u.read()
     data = json.loads(response)
-    return render_template("index.html", wind = data['consolidated_weather'])
+    return render_template("index.html", wind = data['consolidated_weather'][0])
+
+
+@app.route("/second")
+def second():
+    u = urllib2.urlopen("http://taco-randomizer.herokuapp.com/random/")
+    response = u.read()
+    data = json.loads(response)
+    return render_template("index1.html", cond = data['condiment'])
 
 if __name__ == "__main__":
     app.debug = True
