@@ -18,7 +18,7 @@ def root():
 @app.route("/omdb")
 def omdb():
     url = "http://www.omdbapi.com/?i=tt3896198&apikey=58ce8363"
-    response = request.urlopen(url)
+    response = urllib2.urlopen(url)
     response = response.read()
     data = json.loads(response)
     return render_template("omdb.html",title=data['Title'],year=data['Year'],plot=data['Plot'])
