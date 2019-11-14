@@ -1,4 +1,4 @@
-# Albert Wan
+# Albert Wan, Tammy Chen
 # SoftDev1 pd09
 # K #25: Getting More REST
 # 2019-11-13
@@ -15,8 +15,15 @@ def root():
     data = json.loads(response)
     return render_template("index.html", wind = data['consolidated_weather'][0])
 
+@app.route("/omdb")
+def omdb():
+    url = "http://www.omdbapi.com/?i=tt3896198&apikey=58ce8363"
+    response = request.urlopen(url)
+    response = response.read()
+    data = json.loads(response)
+    return render_template("omdb.html",title=data['Title'],year=data['Year'],plot=data['Plot'])
 
-@app.route("/second")
+@app.route("/tacos")
 def second():
     u = urllib2.urlopen("http://taco-randomizer.herokuapp.com/random/")
     response = u.read()
