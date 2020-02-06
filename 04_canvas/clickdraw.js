@@ -21,6 +21,7 @@ var addshape = function(e){
   }else{
     console.log("ellipse");
     ctx.fillStyle = 'green';
+    ctx.beginPath();
     ctx.ellipse(e.layerX, e.layerY, 30,30, 0,0, Math.PI*2);
     ctx.fill();
   }
