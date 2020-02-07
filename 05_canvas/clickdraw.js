@@ -31,7 +31,7 @@ var addshape = function(e){
     console.log("ellipse");
     ctx.fillStyle = 'green';
     ctx.beginPath();
-    ctx.ellipse(xcor, ycor , 15,0, Math.PI*2);
+    ctx.arc(xcor, ycor , 20,0, Math.PI*2);
     ctx.fill();
   }
 }
