@@ -1,6 +1,6 @@
 //Albert Wan
 //SoftDev2 pd9
-//K04 -- I See a Red Door...
+//K05 ...and I want to Paint It Better
 //2020-02-06
 var canvas = document.getElementById("slate");
 var cleary = document.getElementById("clearrect");
