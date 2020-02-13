@@ -35,7 +35,8 @@ var makecircle = function() {
     id = window.requestAnimationFrame(makecircle);
   }
 };
-circle.addEventListener('click', function(e){
+
+var eventcircle = function(e){
   if (starting == false){
     id = window.requestAnimationFrame(makecircle);
     if (increase == 0){
@@ -45,4 +46,5 @@ circle.addEventListener('click', function(e){
     makecircle();
     starting = true;
   }
-});
+};
+circle.addEventListener('click', eventcircle);
