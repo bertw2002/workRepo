@@ -32,7 +32,7 @@ var makecircle = function() {
   ctx.fillStyle = "green";
   ctx.fill();
   if (id != 0) {
-    requestID = window.requestAnimationFrame(makecircle);
+    id = window.requestAnimationFrame(makecircle);
   }
 };
 circle.addEventListener('click', function(e){
