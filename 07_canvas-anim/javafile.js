@@ -39,11 +39,8 @@ var makecircle = function() {
 var eventcircle = function(e){
   if (starting == false){
     id = window.requestAnimationFrame(makecircle);
-    if (increase == 0){
-      increase = 1;
-      makecircle();
-    }
     makecircle();
+    increase = 1;
     starting = true;
   }
 };
