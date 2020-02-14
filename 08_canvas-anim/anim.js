@@ -4,7 +4,7 @@ var c = document.getElementById("slate");
 var ctx = c.getContext("2d");
 
 var xDVD = 30;
-var yDVD = 30;
+var yDVD = 240;
 var xIncrem = 1;
 var yIncrem = 1;
 var circle = document.getElementById("go");
@@ -41,14 +41,15 @@ var makecircle = function() {
   ctx.stroke();
   ctx.fillStyle = "green";
   ctx.fill();
-  if (id != 0) {
-    id = window.requestAnimationFrame(makecircle);
+  if (animID != 0) {
+    animID = window.requestAnimationFrame(makecircle);
   }
 };
 
 var eventcircle = function(e){
   if (starting == false){
-    id = window.requestAnimationFrame(makecircle);
+    movieID = 0;
+    animID = window.requestAnimationFrame(makecircle);
     makecircle();
     increase = 1;
     starting = true;
@@ -58,15 +59,15 @@ circle.addEventListener('click', eventcircle);
 
 var makedvdMove = function(e){
   ctx.clearRect(0,0,600,600);
-  if (yDVD <= 10 || yDVD >= 550){
+  if (yDVD <= 10 || yDVD >= 570){
     yIncrem = yIncrem * -1;
   }
-  if (xDVD <= 10 || xDVD >= 550){
+  if (xDVD <= 10 || xDVD >= 570){
     xIncrem = xIncrem * -1;
   }
   xDVD = xDVD + xIncrem;
   yDVD = yDVD + yIncrem;
-  ctx.drawImage(logo, xDVD, yDVD);
+  ctx.drawImage(logo, xDVD, yDVD, 50, 30);
   if (movieID != 0){
     window.requestAnimationFrame(makedvdMove);
   }
