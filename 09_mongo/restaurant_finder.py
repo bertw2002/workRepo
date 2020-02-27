@@ -5,6 +5,15 @@
 
 from pymongo import MongoClient
 from bson.json_util import loads
-client = MongoClient('localhost')
+client = MongoClient('localhost', 27017)
 
-db = client.restaurants
+db1 = client.someDB
+db = db1.restaurants
+
+def get_borough(bor):
+
+def get_zip(zip):
+
+def get_zipgrade(zip, grade):
+
+def get_zipthresh(zip, thresh):
