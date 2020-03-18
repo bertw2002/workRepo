@@ -1,5 +1,5 @@
 
-#Albert Wan
+#Albert Wan (same pokedex file as calvin chu)
 #SoftDev1 pd9
 #K11: Ay Mon Go Git It From Yer Flask
 #2020-03-09
