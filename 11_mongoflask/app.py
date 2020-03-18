@@ -23,56 +23,90 @@ if (collection.count() == 0):
         collection.insert_one(post)
 
 def getID(id):
+    arr = []
     for x in (collection.find({"id" : id})):
-        return x
+        arr.append(x)
+    return arr
 def getNum(num):
+    arr = []
     for x in (collection.find({"num" : num})):
-        return x
+        arr.append(x)
+
+    return arr
 def getName(name):
+    arr = []
     for x in (collection.find({"name" : name})):
-        return x
+        arr.append(x)
+
+    return arr
 def getImg(img):
+    arr = []
     for x in (collection.find({"img" : img})):
-        return x
+        arr.append(x)
+
+    return arr
 def getType(t):
+    arr = []
     for x in (collection.find({"type" : {"$in" : [t]}})):
-        return x
-def getTypes(t1, t2):
-    for x in (collection.find({"$and" : [{"type" : {"$in" : [t1]}}, {"type" : {"$in" : [t2]}} ]})):
-        return x
+        arr.append(x)
+
+    return arr
 def getCandy(c):
+    arr = []
     for x in (collection.find({"candy" : c})):
-        return x
+        arr.append(x)
+    return arr
 def getCandyCount(c):
+    arr = []
     for x in (collection.find({"candy_count" : c})):
-        return x
+        arr.append(x)
+    return arr
 def getMaxSpawnChance(c):
+    arr= []
     for x in (collection.find({"spawn_chance" : {"$lte" : c}})):
-        return x
+        arr.append(x)
+    return arr
 def getMaxAvgSpawns(s):
+    arr=[]
     for x in (collection.find({"avg_spawns" : {"$lte" : s}})):
-        return x
+        arr.append(x)
+    return arr
 def getSpawnTime(t):
+    arr=[]
     for x in (collection.find({"spawn_time" : t})):
-        return x
+        arr.append(x)
+
+    return arr
 def getMultipliers(m):
+    arr=[]
     for x in (collection.find({"multipliers" : {"$in" : [m]}})):
-        return x
+        arr.append(x)
+    return arr
 def getWeakness(w):
+    arr=[]
     for x in (collection.find({"weaknesses" : {"$in" : [w]}})):
-        return x
+        arr.append(x)
+    return arr
 def getNextEvNum(n):
+    arr=[]
     for x in (collection.find({"next_evolution.num" : n})):
-        return x
+        arr.append(x)
+    return arr
 def getNextEvName(n):
+    arr=[]
     for x in (collection.find({"next_evolution.name" : n})):
-        return x
+        arr.append(x)
+    return arr
 def getPrevEvNum(n):
+    arr=[]
     for x in (collection.find({"prev_evolution.num" : n})):
-        return x
+        arr.append(x)
+    return arr
 def getPrevEvName(n):
+    arr=[]
     for x in (collection.find({"prev_evolution.name" : n})):
-        return x
+        arr.append(x)
+    return arr
 
 
 app = Flask(__name__)
