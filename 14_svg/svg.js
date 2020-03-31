@@ -39,15 +39,19 @@ var circleMove = function(e) {
         yIncrem = -1;
       }
       allCircles[x].setAttribute("state", "moving");
+      allCircles[x].setAttribute("xIncrem", xIncrem);
+      allCircles[x].setAttribute("yIncrem", yIncrem);
     }
-    var xCor =  parseInt(allCircles[x].getAttribute("cx")) + xIncrem;
-    var yCor =  parseInt(allCircles[x].getAttribute("cy")) + yIncrem;
-    if (yCor <= 10 || yCor >= 570){
-      yIncrem = yIncrem * -1;
+    var xCor =  parseInt(allCircles[x].getAttribute("cx")) + parseInt(allCircles[x].getAttribute("xIncrem"));
+    var yCor =  parseInt(allCircles[x].getAttribute("cy")) + parseInt(allCircles[x].getAttribute("yIncrem"));
+    if (yCor <= 5 || yCor >= 590){
+      allCircles[x].setAttribute("yIncrem", parseInt(allCircles[x].getAttribute("yIncrem") * -1));
     }
-    if (xCor <= 10 || xCor >= 570){
-      xIncrem = xIncrem * -1;
+    if (xCor <= 5 || xCor >= 590){
+      allCircles[x].setAttribute("xIncrem", parseInt(allCircles[x].getAttribute("xIncrem") * -1));
     }
+
+
     allCircles[x].setAttribute("cy", yCor);
     allCircles[x].setAttribute("cx", xCor);
   }
