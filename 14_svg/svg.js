@@ -25,15 +25,20 @@ var circleMove = function(e) {
   var allCircles = canvas.children;
   var length = allCircles.length;
   for (var x = 0; x < length; x++){
-    if (Math.floor(Math.random() * 2) == 0){
-      xIncrem = 1;
-    }else{
-      xIncrem = -1;
-    }
-    if (Math.floor(Math.random() * 2) == 0){
-      yIncrem = 1;
-    }else{
-      yIncrem = -1;
+    var state = allCircles[x].getAttribute("state");
+    if (state !== "moving"){
+
+      if (Math.floor(Math.random() * 2) == 0){
+        xIncrem = 1;
+      }else{
+        xIncrem = -1;
+      }
+      if (Math.floor(Math.random() * 2) == 0){
+        yIncrem = 1;
+      }else{
+        yIncrem = -1;
+      }
+      allCircles[x].setAttribute("state", "moving");
     }
     var xCor =  parseInt(allCircles[x].getAttribute("cx")) + xIncrem;
     var yCor =  parseInt(allCircles[x].getAttribute("cy")) + yIncrem;
