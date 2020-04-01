@@ -59,6 +59,15 @@ var circleMove = function(e) {
 
 }
 
+var circleXtra = function(e) {
+  var allCircles = canvas.children;
+  var length = allCircles.length;
+  for (var x = 0; x < length; x++) {
+    allCircles[x].setAttribute("cx", Math.floor(Math.random() * 500));
+    allCircles[x].setAttribute("cy", Math.floor(Math.random() * 500));
+  }
+}
+
 var clearC = function() {
   while(canvas.childElementCount > 0){
     canvas.removeChild(canvas.children[0]);
@@ -66,4 +75,5 @@ var clearC = function() {
 }
 clear.addEventListener("click", clearC);
 movement.addEventListener("click", circleMove);
+xtra.addEventListener("click", circleXtra);
 canvas.addEventListener("click",draw);
