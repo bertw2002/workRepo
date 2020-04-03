@@ -1,0 +1,15 @@
+Albert Wan
+Softdev  pd 9
+k16 Dabbling in D3
+2020-04-02
+
+00
+Predictions/observations:
+- A chart that is styled based on what is in the style sheet.
+- Width follow what it says in the code.
+
+01
+Observations/predictions:
+- Chart displayed based on window size.
+- same horizontal chart as before.
+- The div for the chart has nothing in it.
